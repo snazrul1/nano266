@@ -2,8 +2,13 @@
   calculation = 'scf' ,
   outdir = './tmp' ,
   pseudo_dir = './' ,
+<<<<<<< HEAD
   tprnfor = .True.,        
   tstress = .True.,        
+=======
+  tprnfor = .True.,
+  tstress = .True.,
+>>>>>>> 997b427c2183103336d1d9946c1b0f18b68a7fee
 /
 &system
   ibrav = 2,
