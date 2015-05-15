@@ -12,23 +12,24 @@ Author: Shyue Ping Ong
 
 import os
 import shutil
+import numpy as np
 
 # Load the Si.pw.in.template file as a template.
-with open("Fe.bcc.pw.in.template") as f:
+with open("PbTiO3.pw.in.template") as f:
     template = f.read()
 
 # Set default values for various parameters
-k = 8 # k-point grid of 8x8x8
+k = 4 # k-point grid of 4x4x4
 alat = 5.42 # The lattice parameter for the cell in Bohr.
 
-# Loop through different k-points.
-for k in [8]:
+# Loop through different alat.
+for alat in np.linspace(3.5,4.5,11):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(alat=alat, k=k)
 
     # Let's define an easy jobname.
-    jobname = "Fe_bcc_%s_%s" % (alat, k)
+    jobname = "PBTiO3_%s_%s" % (alat, k)
 
     # Write the actual input file for PWSCF.
     with open("%s.pw.in" % jobname, "w") as f:

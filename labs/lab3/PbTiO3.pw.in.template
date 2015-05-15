@@ -36,5 +36,5 @@ ATOMIC_POSITIONS crystal
    O       0.5    0.0    0.5 
    O       0.0    0.5    0.5  
 K_POINTS automatic 
-  6 6 6   1 1 1
+   {k} {k} {k}  1 1 1
 
