@@ -6,10 +6,12 @@ calculations. If you don't know Python, get a quick primer from the official
 Python documentation at https://docs.python.org/2.7/.
 
 Author: Shyue Ping Ong
+
 """
 
 import os
 import shutil
+import numpy as np
 
 # Load the Fe.pw.in.template file as a template.
 with open("Si.pw.in.template") as f:
@@ -23,7 +25,7 @@ psp = "Si.pbe-n-kjpaw_psl.0.1.UPF"
 
 # Loop through a series of values of ecut. Note that ecut is stipulated in Ry
 # in PWSCF. 
-for ecut in [10, 20, 30, 40, 50]:
+for ecut in np.linspace(10,100,num=10):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(alat=alat, k=k, ecut=ecut, pseudopotential=psp)

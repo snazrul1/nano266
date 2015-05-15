@@ -11,7 +11,9 @@ patterns = {
     "energy": re.compile("total energy\s+=\s+([\d\.\-]+)\sRy"),
     "ecut": re.compile("kinetic\-energy cutoff\s+=\s+([\d\.\-]+)\s+Ry"),
     "alat": re.compile("celldm\(1\)=\s+([\d\.]+)\s"),
-    "nkpts": re.compile("number of k points=\s+([\d]+)")
+    "nkpts": re.compile("number of k points=\s+([\d]+)"),
+    "time": re.compile("PWSCF\s+:\s+([\d\w\s*\d\w\d\.]+\w)\s+\CPU"),
+    "force": re.compile("Total force =\s+([\d\.]+)")
 }
 
 def get_results(filename):
@@ -21,7 +23,10 @@ def get_results(filename):
             for k, p in patterns.items():
                 m = p.search(l)
                 if m:
-                    data[k] = float(m.group(1))
+                    try:
+		    	data[k] = float(m.group(1))
+		    except: 
+		        data[k] = str(m.group(1))
                     continue
     return data
 
@@ -31,7 +36,7 @@ if __name__ == "__main__":
         print('Usage is "python analyze.py filenames"')
         print('Wildcards can be used, e.g., "python analyze *.out"')
         sys.exit(0)
-    fieldnames = ['filename', 'ecut', 'nkpts', 'alat', 'energy']
+    fieldnames = ['filename', 'ecut', 'nkpts', 'alat', 'energy','time','force']
     with open('results.csv', 'w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
