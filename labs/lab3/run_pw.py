@@ -20,23 +20,23 @@ with open("PbTiO3.pw.in.template") as f:
 
 # Set default values for various parameters
 k = 4 # k-point grid of 4x4x4
-alat = 5.42 # The lattice parameter for the cell in Bohr.
+alat = 7.49 # The lattice parameter for the cell in Bohr.
 
 # Loop through different alat.
-for alat in np.linspace(3.5,4.5,11):
+for t in [0.6]:
     # This generates a string from the template with the parameters replaced
     # by the specified values.
-    s = template.format(alat=alat, k=k)
+    s = template.format(alat=alat, k=k, t=t)
 
     # Let's define an easy jobname.
-    jobname = "PBTiO3_%s_%s" % (alat, k)
+    jobname = "PBTiO3_%s_%s_%s" % (alat, k, t)
 
     # Write the actual input file for PWSCF.
     with open("%s.pw.in" % jobname, "w") as f:
         f.write(s)
 
     #Print some status messages.
-    print("Running with alat = %s, k = %s..." % (alat, k))
+    print("Running with t = %s alat = %s, k = %s..." % (t, alat, k))
     # Run PWSCF. Modify the pw.x command accordingly if needed.
     os.system("pw.x -inp {jobname}.pw.in > {jobname}.out".format(jobname=jobname))
 
