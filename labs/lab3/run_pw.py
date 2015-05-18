@@ -23,7 +23,7 @@ k = 4 # k-point grid of 4x4x4
 alat = 7.49 # The lattice parameter for the cell in Bohr.
 
 # Loop through different alat.
-for t in np.linspace(0.4,0.6,3):
+for t in [0.45,0.55]:
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(alat=alat, k=k, t=t)
