@@ -27,5 +27,5 @@ ATOMIC_SPECIES
 ATOMIC_POSITIONS crystal 
    Al   0.0   0.0    0.0    
 K_POINTS automatic 
-  {k} {k} {k} 0 0 0 
+  8 8 1 0 0 0 
 

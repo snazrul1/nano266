@@ -23,7 +23,7 @@ k = 8 # k-point grid of 8x8x8
 alat = 7.65 # The lattice parameter for the cell in Bohr.
 
 # Loop through different k-points.
-for alat in np.arange(7.60, 7.70, 0.01):
+for alat in np.arange(7.301, 7.319, 0.001):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(k=k, alat=alat)

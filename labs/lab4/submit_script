@@ -10,7 +10,7 @@
 
 # This tells the queuing system that we want a walltime of 1 hour. For this lab,
 # this should be more than sufficient.
-#SBATCH -t 01:00:00
+#SBATCH -t 04:00:00
 
 # This sets the account, which is our NANO266 account
 #SBATCH -A csd452          
